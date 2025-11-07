@@ -15,7 +15,7 @@ jobs:
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v2
         with:
-          cmake-version: '4.2.x'
+          cmake-version: '4.1.x'
       - name: Install Gfortran 14
         run: sudo apt install -y gfortran-14
       - name: Build Tests
