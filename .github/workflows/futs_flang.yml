@@ -31,8 +31,8 @@ jobs:
         run: sudo apt install --no-install-recommends clang-21 flang-21
       - name: Build Tests
         run: |
-            flang --version
-            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which flang)
+            flang-21 --version
+            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which flang-21)
             cmake --build build
       - name: Run Tests
         run: |
