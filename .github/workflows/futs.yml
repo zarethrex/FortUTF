@@ -15,7 +15,7 @@ concurrency:
 jobs:
   build:
     name: Ubuntu Latest Tests
-    runs-on: 'ubuntu-25.04'
+    runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v4
       - name: Setup cmake
