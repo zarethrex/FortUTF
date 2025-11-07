@@ -232,9 +232,9 @@ MODULE FUTF_ASSERTIONS
                 IF(INT_1(I) /= INT_2(I)) THEN
                     COMPARE = .FALSE.
                     EXIT
-                ENDIF
+                END IF
             ENDDO
-        ENDIF
+        END IF
 
         IF(COMPARE) THEN
             CALL REGISTER_PASSED
@@ -264,9 +264,9 @@ MODULE FUTF_ASSERTIONS
                 IF(INT_1(I) /= INT_2(I)) THEN
                     COMPARE = .FALSE.
                     EXIT
-                ENDIF
+                END IF
             ENDDO
-        ENDIF
+        END IF
 
         IF(COMPARE) THEN
             CALL REGISTER_PASSED
@@ -296,9 +296,9 @@ MODULE FUTF_ASSERTIONS
                 IF(INT_1(I) /= INT_2(I)) THEN
                     COMPARE = .FALSE.
                     EXIT
-                ENDIF
+                END IF
             ENDDO
-        ENDIF
+        END IF
 
         IF(COMPARE) THEN
             CALL REGISTER_PASSED
@@ -328,9 +328,9 @@ MODULE FUTF_ASSERTIONS
                 IF(INT_1(I) /= INT_2(I)) THEN
                     COMPARE = .FALSE.
                     EXIT
-                ENDIF
+                END IF
             ENDDO
-        ENDIF
+        END IF
 
         IF(COMPARE) THEN
             CALL REGISTER_PASSED
@@ -392,9 +392,9 @@ MODULE FUTF_ASSERTIONS
                 IF(REAL_1(I) /= REAL_2(I)) THEN
                     COMPARE = .FALSE.
                     EXIT
-                ENDIF
+                END IF
             ENDDO
-        ENDIF
+        END IF
 
         IF(COMPARE) THEN
             CALL REGISTER_PASSED
@@ -427,9 +427,9 @@ MODULE FUTF_ASSERTIONS
                 IF(REAL_1(I) /= REAL_2(I)) THEN
                     COMPARE = .FALSE.
                     EXIT
-                ENDIF
+                END IF
             ENDDO
-        ENDIF
+        END IF
 
         IF(COMPARE) THEN
             CALL REGISTER_PASSED
@@ -498,7 +498,7 @@ MODULE FUTF_ASSERTIONS
             TOLERANCE = REL_TOL
         ELSE
             TOLERANCE = 1D-9
-        ENDIF
+        END IF
 
         PASSES = .FALSE.
 
@@ -506,7 +506,7 @@ MODULE FUTF_ASSERTIONS
             PASSES = 100*ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
         ELSE
             PASSES = ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
-        ENDIF
+        END IF
 
         IF(PASSES) THEN
             CALL REGISTER_PASSED
@@ -514,7 +514,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, '(A, I0, A, I0, A, E12.5)') "ASSERT_ALMOST_EQUAL: ABS(", INT_1, " - ", INT_2, ") > ", TOLERANCE
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_ALMOST_EQUAL_INT_1BYTE
 
@@ -529,7 +529,7 @@ MODULE FUTF_ASSERTIONS
             TOLERANCE = REL_TOL
         ELSE
             TOLERANCE = 1D-9
-        ENDIF
+        END IF
 
         PASSES = .FALSE.
 
@@ -537,7 +537,7 @@ MODULE FUTF_ASSERTIONS
             PASSES = 100*ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
         ELSE
             PASSES = ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
-        ENDIF
+        END IF
 
         IF(PASSES) THEN
             CALL REGISTER_PASSED
@@ -545,7 +545,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, '(A, I0, A, I0, A, E12.5)') "ASSERT_ALMOST_EQUAL: ABS(", INT_1, " - ", INT_2, ") > ", TOLERANCE
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_ALMOST_EQUAL_INT_2BYTE
 
@@ -560,7 +560,7 @@ MODULE FUTF_ASSERTIONS
             TOLERANCE = REL_TOL
         ELSE
             TOLERANCE = 1D-9
-        ENDIF
+        END IF
 
         PASSES = .FALSE.
 
@@ -568,7 +568,7 @@ MODULE FUTF_ASSERTIONS
             PASSES = 100*ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
         ELSE
             PASSES = ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
-        ENDIF
+        END IF
 
         IF(PASSES) THEN
             CALL REGISTER_PASSED
@@ -576,7 +576,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, '(A, I0, A, I0, A, E12.5)') "ASSERT_ALMOST_EQUAL: ABS(", INT_1, " - ", INT_2, ") > ", TOLERANCE
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_ALMOST_EQUAL_INT_4BYTE
 
@@ -591,7 +591,7 @@ MODULE FUTF_ASSERTIONS
             TOLERANCE = REL_TOL
         ELSE
             TOLERANCE = 1D-9
-        ENDIF
+        END IF
 
         PASSES = .FALSE.
 
@@ -599,7 +599,7 @@ MODULE FUTF_ASSERTIONS
             PASSES = 100*ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
         ELSE
             PASSES = ABS(1D0*INT_1-INT_2)/INT_1 <= TOLERANCE
-        ENDIF
+        END IF
 
         IF(PASSES) THEN
             CALL REGISTER_PASSED
@@ -607,7 +607,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, '(A, I0, A, I0, A, E12.5)') "ASSERT_ALMOST_EQUAL: ABS(", INT_1, " - ", INT_2, ") > ", TOLERANCE
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_ALMOST_EQUAL_INT_8BYTE
 
@@ -622,7 +622,7 @@ MODULE FUTF_ASSERTIONS
             TOLERANCE = REL_TOL
         ELSE
             TOLERANCE = 1D-9
-        ENDIF
+        END IF
 
         PASSES = .FALSE.
 
@@ -630,7 +630,7 @@ MODULE FUTF_ASSERTIONS
             PASSES = 100*ABS(REAL_1-REAL_2)/REAL_1 <= TOLERANCE
         ELSE
             PASSES = ABS(REAL_1-REAL_2)/REAL_1 <= TOLERANCE
-        ENDIF
+        END IF
 
         IF(PASSES) THEN
             CALL REGISTER_PASSED
@@ -638,7 +638,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, *) "ASSERT_ALMOST_EQUAL: ABS(", REAL_1, " - ", REAL_2, ") > ", TOLERANCE
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_ALMOST_EQUAL_REAL_8BYTE
 
@@ -653,7 +653,7 @@ MODULE FUTF_ASSERTIONS
             TOLERANCE = REL_TOL
         ELSE
             TOLERANCE = 1E-9
-        ENDIF
+        END IF
 
         PASSES = .FALSE.
 
@@ -661,7 +661,7 @@ MODULE FUTF_ASSERTIONS
             PASSES = 100*ABS(REAL_1-REAL_2)/REAL_1 <= TOLERANCE
         ELSE
             PASSES = ABS(REAL_1-REAL_2)/REAL_1 <= TOLERANCE
-        ENDIF
+        END IF
 
         IF(PASSES) THEN
             CALL REGISTER_PASSED
@@ -669,7 +669,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, *) "ASSERT_ALMOST_EQUAL: ABS(", REAL_1, " - ", REAL_2, ") > ", TOLERANCE
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_ALMOST_EQUAL_REAL_4BYTE
 
@@ -682,7 +682,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, '(A)') "STATEMENT RETURNED FALSE"
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_TRUE
 
@@ -695,7 +695,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, '(A)') "STATEMENT RETURNED TRUE"
-        ENDIF
+        END IF
         INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
     END SUBROUTINE ASSERT_FALSE
 
@@ -1401,7 +1401,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, *) "ASSERT_ARRAY_CONTAINS: ", VAL, " NOT IN ", ARRAY
-        ENDIF
+        END IF
     END SUBROUTINE VAL_IN_ARR_INT_1BYTE
 
     SUBROUTINE VAL_IN_ARR_INT_2BYTE(ARRAY, VAL)
@@ -1414,7 +1414,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, *) "ASSERT_ARRAY_CONTAINS: ", VAL, " NOT IN ", ARRAY
-        ENDIF
+        END IF
     END SUBROUTINE VAL_IN_ARR_INT_2BYTE
 
     SUBROUTINE VAL_IN_ARR_INT_4BYTE(ARRAY, VAL)
@@ -1427,7 +1427,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, *) "ASSERT_ARRAY_CONTAINS: ", VAL, " NOT IN ", ARRAY
-        ENDIF
+        END IF
     END SUBROUTINE VAL_IN_ARR_INT_4BYTE
 
     SUBROUTINE VAL_IN_ARR_INT_8BYTE(ARRAY, VAL)
@@ -1440,7 +1440,7 @@ MODULE FUTF_ASSERTIONS
         ELSE
             CALL REGISTER_FAILED
             WRITE(INFO, *) "ASSERT_ARRAY_CONTAINS: ", VAL, " NOT IN ", ARRAY
-        ENDIF
+        END IF
     END SUBROUTINE VAL_IN_ARR_INT_8BYTE
 
 END MODULE

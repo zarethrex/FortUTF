@@ -25,7 +25,7 @@ MODULE FUTF_SUITE
         ! If no test name specified use default 'Test #
         IF(IDENTIFIER == "UNNAMED TEST") THEN
             WRITE(IDENTIFIER, '(A, i0)') "TEST ", SIZE(TEST_NAMES) + 1
-        ENDIF
+        END IF
 
         TEST_NAMES = APPEND_CHAR(TEST_NAMES, IDENTIFIER, LEN(IDENTIFIER))
 
@@ -41,7 +41,7 @@ MODULE FUTF_SUITE
         ! If no test name specified use default 'Test #'
         IF(IDENTIFIER == "UNNAMED TEST") THEN
             WRITE(IDENTIFIER, '(A, i0)') "TEST ", SIZE(TEST_NAMES) + 1
-        ENDIF
+        END IF
         TEST_NAMES = APPEND_CHAR(TEST_NAMES, IDENTIFIER, LEN(IDENTIFIER))
         IDENTIFIER = "UNNAMED TEST"
     END SUBROUTINE
@@ -60,27 +60,27 @@ MODULE FUTF_SUITE
         ! tests being non-zero, this corrects for that
         IF(N_FAILED > 0) THEN
             FUTF_EXIT_CODE = 1
-        ENDIF
+        END IF
 
         DO I=1, NTESTS
             IF(TEST_RESULTS(I) == 'F') THEN
                 IFAILED = APPEND_INT(IFAILED, I)
-            ENDIF
+            END IF
         ENDDO
 
         IF(FUTF_TOTAL-FUTF_PASSED == 0) THEN
             RETURN
-        ENDIF
+        END IF
 
         DO I=1, SIZE(IFAILED)
             IF(TEST_NAMES(IFAILED(I)) /= "UNNAMED TEST") THEN
                 IF(PRINT_NAMED_FAILED_TESTS) THEN
                     WRITE(*,*) "THE FOLLOWING TESTS FAILED: ", NEW_LINE('A')
                     PRINT_NAMED_FAILED_TESTS = .FALSE.
-                ENDIF
+                END IF
                 WRITE(*,*) "  - ", TEST_NAMES(IFAILED(I))
                 WRITE(*,*) REPEAT(" ", 10), TRIM(INFO_STRINGS(IFAILED(I))), NEW_LINE('A')
-            ENDIF
+            END IF
         ENDDO
 
     END SUBROUTINE
@@ -92,16 +92,16 @@ MODULE FUTF_SUITE
         IF(.NOT. ALLOCATED(TEST_RESULTS) .OR. .NOT. ALLOCATED(INFO_STRINGS)) THEN
             IF(.NOT. PRESENT(QUIET)) THEN
                 WRITE(*,*) "No Tests Found."
-            ENDIF
+            END IF
             RETURN
-        ENDIF
+        END IF
 
         IF(.NOT. PRESENT(QUIET)) THEN
             WRITE(*,*) REPEAT("-", 54)
             WRITE(N_TEST_STR, '(A, i0, A)') "GATHERED ",SIZE(TEST_RESULTS)," TESTS:"
             WRITE(*,*) TRIM(N_TEST_STR), " ", TEST_RESULTS
             WRITE(*,*) REPEAT("-", 54), NEW_LINE('A')
-        ENDIF
+        END IF
         CALL FAILED_TEST_SUMMARY
         IF(.NOT. PRESENT(QUIET)) THEN
             WRITE(*,*) NEW_LINE('A')
@@ -109,15 +109,15 @@ MODULE FUTF_SUITE
             WRITE(*,*) REPEAT("*", 20), " TEST SUMMARY ", REPEAT("*", 20), NEW_LINE('A')
             WRITE(*,*) RESULT_STR, NEW_LINE('A')
             WRITE(*,*) REPEAT("*", 54)
-        ENDIF
+        END IF
 
         IF(.NOT. PRESENT(QUIET)) THEN
             IF(FUTF_EXIT_CODE == 0) THEN
                 STOP
             ELSE
                 ERROR STOP FUTF_EXIT_CODE
-            ENDIF
-        ENDIF
+            END IF
+        END IF
     END SUBROUTINE
 
     SUBROUTINE RESET_LAST_TEST_STATUS
@@ -128,6 +128,6 @@ MODULE FUTF_SUITE
             FUTF_PASSED = FUTF_PASSED + 1
             INFO_STRINGS = INFO_STRINGS(1:SIZE(INFO_STRINGS)-1)
             INFO_STRINGS = APPEND_CHAR(INFO_STRINGS, INFO, LEN(INFO))
-        ENDIF
+        END IF
     END SUBROUTINE RESET_LAST_TEST_STATUS
 END MODULE
