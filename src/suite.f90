@@ -50,7 +50,7 @@ MODULE FUTF_SUITE
 
         INTEGER, DIMENSION(:), ALLOCATABLE :: IFAILED
         INTEGER :: NTESTS, N_FAILED, I
-        LOGICAL :: PRINT_NAMED_FAILED_TESTS = .TRUE.
+        LOGICAL, SAVE :: PRINT_NAMED_FAILED_TESTS = .TRUE.
 
         NTESTS = SIZE(TEST_NAMES)
         N_FAILED = FUTF_TOTAL-FUTF_PASSED
@@ -66,7 +66,7 @@ MODULE FUTF_SUITE
             IF(TEST_RESULTS(I) == 'F') THEN
                 IFAILED = APPEND_INT(IFAILED, I)
             END IF
-        ENDDO
+        END DO
 
         IF(FUTF_TOTAL-FUTF_PASSED == 0) THEN
             RETURN
@@ -81,7 +81,7 @@ MODULE FUTF_SUITE
                 WRITE(*,*) "  - ", TEST_NAMES(IFAILED(I))
                 WRITE(*,*) REPEAT(" ", 10), TRIM(INFO_STRINGS(IFAILED(I))), NEW_LINE('A')
             END IF
-        ENDDO
+        END DO
 
     END SUBROUTINE
 

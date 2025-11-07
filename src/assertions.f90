@@ -233,7 +233,7 @@ MODULE FUTF_ASSERTIONS
                     COMPARE = .FALSE.
                     EXIT
                 END IF
-            ENDDO
+            END DO
         END IF
 
         IF(COMPARE) THEN
@@ -265,7 +265,7 @@ MODULE FUTF_ASSERTIONS
                     COMPARE = .FALSE.
                     EXIT
                 END IF
-            ENDDO
+            END DO
         END IF
 
         IF(COMPARE) THEN
@@ -297,7 +297,7 @@ MODULE FUTF_ASSERTIONS
                     COMPARE = .FALSE.
                     EXIT
                 END IF
-            ENDDO
+            END DO
         END IF
 
         IF(COMPARE) THEN
@@ -329,7 +329,7 @@ MODULE FUTF_ASSERTIONS
                     COMPARE = .FALSE.
                     EXIT
                 END IF
-            ENDDO
+            END DO
         END IF
 
         IF(COMPARE) THEN
@@ -393,7 +393,7 @@ MODULE FUTF_ASSERTIONS
                     COMPARE = .FALSE.
                     EXIT
                 END IF
-            ENDDO
+            END DO
         END IF
 
         IF(COMPARE) THEN
@@ -428,7 +428,7 @@ MODULE FUTF_ASSERTIONS
                     COMPARE = .FALSE.
                     EXIT
                 END IF
-            ENDDO
+            END DO
         END IF
 
         IF(COMPARE) THEN
