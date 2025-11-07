@@ -1,4 +1,4 @@
-name: FortUTF Ubuntu Gfortran 14
+name: FortUTF Ubuntu Gfortran 15
 
 on: [push, pull_request]
 
@@ -9,18 +9,18 @@ concurrency:
 jobs:
   build:
     name: Ubuntu Latest Tests
-    runs-on: 'ubuntu-24.04'
+    runs-on: 'ubuntu-25.04'
     steps:
       - uses: actions/checkout@v4
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v2
         with:
           cmake-version: '4.1.x'
-      - name: Install Gfortran 14
-        run: sudo apt install -y gfortran-14
+      - name: Install Gfortran 15
+        run: sudo apt install -y gfortran-15
       - name: Build Tests
         run: |
-            gfortran-14 --version
+            gfortran-15 --version
             cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which gfortran-12)
             cmake --build build
       - name: Run Tests

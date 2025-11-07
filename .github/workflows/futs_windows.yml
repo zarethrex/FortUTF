@@ -1,4 +1,4 @@
-name: FortUTF Windows GFortran 13
+name: FortUTF Windows GFortran 15
 
 on: [push]
 
@@ -15,10 +15,10 @@ jobs:
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v2
         with:
-          cmake-version: '3.31.x'
+          cmake-version: '4.1.x'
       - name: Build and Run Tests
         run: |
-            choco upgrade mingw --version="'13.2.0'" -y
+            choco upgrade mingw --version="'15.1.0'" -y
             choco install -y make
             cmake -G "Unix Makefiles" -Bbuild -DBUILD_TESTS=ON
             cmake --build build
