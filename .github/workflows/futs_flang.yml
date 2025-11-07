@@ -1,4 +1,4 @@
-name: FortUTF Ubuntu lfortran 0.33.0
+name: FortUTF Ubuntu LLVM 21
 
 on:
   push:
@@ -14,7 +14,6 @@ concurrency:
 
 jobs:
   build:
-    name: Intel Latest Tests
     runs-on: 'ubuntu-25.04'
     steps:
       - uses: actions/checkout@v4
@@ -22,16 +21,18 @@ jobs:
         uses: jwlawson/actions-setup-cmake@v2
         with:
           cmake-version: '4.1.x'
-      - name: Setup lfortran compiler
-        uses: fortran-lang/setup-fortran@v1
-        id: setup-fortran
-        with:
-          compiler: lfortran
-          version: '0.33.0'
+      - name: Install LLVM
+        run: |
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh 21
+          sudo apt-get update
+      - name: install Flang
+        run: sudo apt install --no-install-recommends clang-21 flang-21
       - name: Build Tests
         run: |
-            lfortran --version
-            cmake -H. -Bbuild -DBUILD_TESTS=ON -DCMAKE_Fortran_COMPILER=lfortran
+            flang --version
+            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which flang)
             cmake --build build
       - name: Run Tests
         run: |
@@ -53,3 +54,14 @@ jobs:
                 echo "Unit Tests failed"
                 exit 1
              fi
+      - name: Run Example Tests
+        run: |
+             ./build/examples/demo_project/DEMO_PROJ_Tests || 
+             if [ $? -eq 1 ]; then
+                echo "Unit Tests failed as expected"
+                exit 0
+             else
+                echo "Unit Tests that should fail passed"
+                exit 1
+             fi
+      

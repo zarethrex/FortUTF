@@ -1,6 +1,12 @@
 name: FortUTF Ubuntu Gfortran 15
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,7 +27,7 @@ jobs:
       - name: Build Tests
         run: |
             gfortran-15 --version
-            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which gfortran-12)
+            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which gfortran-15)
             cmake --build build
       - name: Run Tests
         run: |
