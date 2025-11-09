@@ -25,5 +25,5 @@ keywords:
   - software testing
 license: AGPL-3.0-or-later
 commit: 8486192b6f0aced7aaf78f6f04ce6e1438743bcb
-version: 0.2.0-alpha
-date-released: '2023-12-29'
+version: 0.3.0-alpha
+date-released: '2025-11-09'

@@ -1,5 +1,6 @@
-# Unreleased
+# [v0.3.0-alpha](https://github.com/artemis-beta/FortUTF/releases/tag/0.2.0-alpha) - 2025-11-09
 
+- Modernised F90 to use `END IF` and `END DO`.
 - Fix added for exit status under GNU compiler.
 
 # [v0.2.0-alpha](https://github.com/artemis-beta/FortUTF/releases/tag/0.2.0-alpha) - 2023-12-29
