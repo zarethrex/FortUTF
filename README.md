@@ -2,12 +2,12 @@
 
 A purely FORTRANic framework for testing FORTRAN code
 
-[![FortUTF Ubuntu GFortran 13](https://github.com/artemis-beta/FortUTF/actions/workflows/futs.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs.yml)
-[![FortUTF Windows GFortran 13](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_windows.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_windows.yml)
-[![FortUTF macOS GFortran 13](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_mac.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_mac.yml)
+[![FortUTF Ubuntu GFortran 14](https://github.com/artemis-beta/FortUTF/actions/workflows/futs.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs.yml)
+[![FortUTF Windows GFortran 15](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_windows.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_windows.yml)
+[![FortUTF macOS GFortran 15](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_mac.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_mac.yml)
 
 [![FortUTF Ubuntu Intel 2025](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_intel.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_intel.yml)
-[![FortUTF Ubuntu lfortran 0.33.0](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_lfortran.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_lfortran.yml)
+[![FortUTF Ubuntu Flang 20](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_lfortran.yml/badge.svg)](https://github.com/artemis-beta/FortUTF/actions/workflows/futs_flang.yml)
 
 [![codecov](https://codecov.io/gh/artemis-beta/FortUTF/branch/master/graph/badge.svg?token=tIwLkKYQ98)](https://codecov.io/gh/artemis-beta/FortUTF)
 
