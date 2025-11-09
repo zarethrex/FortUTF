@@ -22,11 +22,11 @@ FortUTF is Unit Test framework written purely in FORTRAN to be compatible with a
 
 ## Writing Tests
 
-All assertions in the current state can be found in the file `src/assertions.f90`. To write a test you only need to create a file containing one a subroutine for each test you wish to run. You can use the available macro script contained within FortUTF which will construct a main script to build and run the tests.
+The full list of available assertion subroutines can be found in the file [`src/assertions.f90`](https://github.com/zarethrex/FortUTF/blob/main/src/assertions.f90). To write tests create a file containing a subroutine for each scenario, you then can use the macro script contained within FortUTF to construct a main script to build and run the tests.
 
 ### Example Project
 
-Contained within this repository is an example project which demonstrates usage of the framework in the form:
+This repository contains an example project which demonstrates a typical layout of files:
 
 ```bash
 demo_project/
@@ -37,28 +37,30 @@ demo_project/
     └── test_functions.f90
 ```
 
-the functions which we would like to test are contained within the project `src` folder. When building tests it is important that you give this location, or the name of a compiled library to FortUTF using either the variable `SRC_FILES` or `SRC_LIBRARY`, the contents of the `CMakeLists.txt` shows this in practice, and point it to the location of our tests using the `FORTUTF_PROJECT_TEST_DIR` variable.
-In addition to include a directory containing module (`.mod`) files required
-to build the library being tested set the variable `FORTUTF_PROJECT_MOD_DIR` to this location.
+In this example, the functions which we would like to test are contained within the file `src/demo_functions.f90`, and the relevant tests within the file `tests/test_functions.f90`.
+
+When building tests it is important that either the source directory containing the code to be tested, or alternatively the name of the library compiled from these sources using the variables `SRC_FILES` or `SRC_LIBRARY` respectively, the contents of the `CMakeLists.txt` shows this in practice. The variable `FORTUTF_PROJECT_TEST_DIR` must point to the directory containing the test files. In addition to include a directory containing module (`.mod`) files towards building of the library to be tested, set the variable `FORTUTF_PROJECT_MOD_DIR`.
 
 ```cmake
-CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
+cmake_minimum_required(VERSION 3.12)
 
-PROJECT(DEMO_PROJ LANGUAGES Fortran)
+project(DEMO_PROJ LANGUAGES Fortran)
 
-MESSAGE(STATUS "[FortUTF Example Project Build]")
-MESSAGE(STATUS "\tProject Source Directory: ${PROJECT_ROOT}")
+message(STATUS "[FortUTF Example Project Build]")
+message(STATUS "\tProject Source Directory: ${PROJECT_ROOT}")
 
-GET_FILENAME_COMPONENT(FORTUTF_ROOT ../../ ABSOLUTE)
+get_filename_component(FORTUTF_ROOT ../../ ABSOLUTE)
 
-SET(FORTUTF_PROJECT_TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
-FILE(GLOB SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.f90)
+set(FORTUTF_PROJECT_TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+file(GLOB SRC_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.f90)
 
-INCLUDE(${FORTUTF_ROOT}/cmake/fortutf.cmake)
-FortUTF_Find_Tests()
+include(${FORTUTF_ROOT}/cmake/fortutf.cmake)
+fortutf_find_tests()
 ```
 
-by including the file `cmake/fortutf.cmake` from within this repository we have access to the `FortUTF_Find_Tests` macro. We can place as many scripts in our `FORTUTF_PROJECT_TEST_DIR` location. An example script for this project is:
+Including `cmake/fortutf.cmake` providers the `fortUTF_find_tests` macro which locates and appends the discovered tests. We can place as many scripts in our `FORTUTF_PROJECT_TEST_DIR` location.
+
+Consider the following example:
 
 ```fortran
 MODULE TEST_DEMO_FUNCTIONS
@@ -79,16 +81,16 @@ MODULE TEST_DEMO_FUNCTIONS
 END MODULE TEST_DEMO_FUNCTIONS
 ```
 
-Firstly we must include the `FORTUTF` module in every test script, then in order for FortUFT to be able to provide labels to any failing tests we tag using the `TAG_TEST` subroutine (not providing a tag will name the test `Test <N>` where `N` is the test number). Finally we call a test subroutine, and that's it!
+The `FORTUTF` module is included within every test script to give access to the assertions, and allow us to tag the test using `TAG_TEST` with a name to help identify it in results on failure (not providing a tag will name the test `Test <N>` where `N` is the test number). For convenience and ease the tests are also defined within a module to group them together.
 
-To build this example we would then just run `cmake` within the project directory:
+The example is then built by running CMake as normal:
 
 ```bash
-cmake -H. -Bbuild
+cmake -Bbuild
 cmake --build build
 ```
 
-this will create a script `run_tests.f90` in the build directory and compile it into a binary.
+in addition to any configuration a script `run_tests.f90` will be created within the build directory and then compiled into a binary.
 
 
 ## Running the Framework Unit Tests
