@@ -1,6 +1,12 @@
 name: FortUTF Ubuntu Gfortran 14
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -9,7 +15,7 @@ concurrency:
 jobs:
   build:
     name: Ubuntu Latest Tests
-    runs-on: 'ubuntu-24.04'
+    runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v4
       - name: Setup cmake
@@ -21,7 +27,7 @@ jobs:
       - name: Build Tests
         run: |
             gfortran-14 --version
-            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which gfortran-12)
+            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which gfortran-14)
             cmake --build build
       - name: Run Tests
         run: |
@@ -57,7 +63,7 @@ jobs:
         continue-on-error: true
         run: |
             sudo apt install -y lcov
-            lcov --gcov-tool $(which gcov) --directory . --capture --output-file temp.info -b src/
+            lcov --gcov-tool $(which gcov-14) --directory . --capture --output-file temp.info -b src/
             lcov --remove temp.info 'tests/*' 'tests/test_assertions/*' -o FortUTF.info
       - uses: codecov/codecov-action@v3
         continue-on-error: true
