@@ -24,7 +24,7 @@ jobs:
         with:
           cmake-version: '4.1.x'
       - name: Install GFortran macOS
-        run: brew install gcc
+        run: brew install gcc-16
       - name: Build Tests
         run: |
             gfortran --version
