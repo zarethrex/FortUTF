@@ -1,4 +1,4 @@
-name: FortUTF macOS GFortran 15
+name: FortUTF macOS GFortran 16
 
 on:
   push:
@@ -18,16 +18,17 @@ jobs:
     runs-on: 'macos-latest'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v2
         with:
           cmake-version: '4.1.x'
       - name: Install GFortran macOS
-        run: brew install gcc@15
+        run: brew install gcc
       - name: Build Tests
         run: |
-            cmake -H. -Bbuild -DBUILD_TESTS=ON -DCMAKE_Fortran_COMPILER=$(which gfortran-15)
+            gfortran --version
+            cmake -H. -Bbuild -DBUILD_TESTS=ON -DCMAKE_Fortran_COMPILER=$(which gfortran)
             cmake --build build
       - name: Run Tests
         run: |
