@@ -1,4 +1,4 @@
-name: FortUTF Ubuntu Gfortran 15
+name: FortUTF Ubuntu Gfortran 16
 
 on:
   push:
@@ -23,7 +23,10 @@ jobs:
         with:
           cmake-version: '4.3.x'
       - name: Install Gfortran 15
-        run: sudo apt install -y gfortran-15
+        run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+          sudo apt update
+          sudo apt install -y gfortran-16
       - name: Build Tests
         run: |
             gfortran-15 --version
