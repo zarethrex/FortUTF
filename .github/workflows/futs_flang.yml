@@ -1,4 +1,4 @@
-name: FortUTF Ubuntu LLVM 20
+name: FortUTF Ubuntu LLVM 22
 
 on:
   push:
@@ -25,14 +25,14 @@ jobs:
         run: |
           wget https://apt.llvm.org/llvm.sh
           chmod +x llvm.sh
-          sudo ./llvm.sh 20
+          sudo ./llvm.sh 22
           sudo apt-get update
       - name: install Flang
-        run: sudo apt install --no-install-recommends clang-20 flang-20
+        run: sudo apt install --no-install-recommends clang-22 flang-22
       - name: Build Tests
         run: |
-            flang-20 --version
-            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which flang-20)
+            flang-22 --version
+            cmake -H. -Bbuild -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON -DCMAKE_Fortran_COMPILER=$(which flang-22)
             cmake --build build
       - name: Run Tests
         run: |
