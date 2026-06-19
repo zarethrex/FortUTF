@@ -34,7 +34,7 @@ endif()
 
 if(BUILD_TESTS)
     if(CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-        set(CMAKE_Fortran_FLAGS "-Wall -Wextra -Wno-compare-reals -Wno-maybe-uninitialized -Wno-uninitialized -O3 -g -fprofile-arcs -ftest-coverage")
+        set(CMAKE_Fortran_FLAGS "-Wall -Wextra -Wno-compare-reals -Wno-maybe-uninitialized -Wno-uninitialized -O3 -g -fprofile-arcs -ftest-coverage -fmodule-private")
     elseif(CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
         set(CMAKE_Fortran_FLAGS "-O3")
     endif()

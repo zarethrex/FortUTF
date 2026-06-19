@@ -20,7 +20,7 @@ jobs:
         run: |
             choco upgrade mingw --version="'16.1.0'" -y
             choco install -y make
-            cmake -G "Unix Makefiles" -DCMAKE_Fortran_FLAGS="-fmodule-private" -Bbuild -DBUILD_TESTS=ON
+            cmake -G "Unix Makefiles" -Bbuild -DBUILD_TESTS=ON
             cmake --build build
             ./build/FortUTF_Tests.exe
 
